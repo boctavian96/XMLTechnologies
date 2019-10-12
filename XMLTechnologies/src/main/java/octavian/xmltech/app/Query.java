@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.plaf.SliderUI;
-
 import octavian.xmltech.datamodel.Author;
 import octavian.xmltech.datamodel.Database;
 import octavian.xmltech.datamodel.Publication;
