@@ -79,6 +79,7 @@ public class DomSource implements DataSource {
 		for(Node node : nodes) {
 			int id = Integer.parseInt(node.selectSingleNode("id").getText());
 			String type = node.selectSingleNode("type").getText();
+			String name = node.selectSingleNode("name").getText();
 			String year = node.selectSingleNode("year").getText();
 			String iSBN = node.selectSingleNode("ISBN").getText();
 			String uRL = node.selectSingleNode("URL").getText();
@@ -90,7 +91,7 @@ public class DomSource implements DataSource {
 				authors[i] = Integer.parseInt(aNodes.get(i).selectSingleNode("authorId").getText());
 			}
 			
-			publications.add(new Publication(id, type, year, authors, iSBN, uRL, citations));
+			publications.add(new Publication(id, type, name, year, authors, iSBN, uRL, citations));
 		}
 		
 		return publications;

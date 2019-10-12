@@ -9,6 +9,7 @@ import org.junit.Test;
 import octavian.xmltech.datamodel.Author;
 import octavian.xmltech.datamodel.Database;
 import octavian.xmltech.datamodel.Department;
+import octavian.xmltech.datamodel.Publication;
 import octavian.xmltech.datasource.DataSource;
 import octavian.xmltech.datasource.sax.SaxSource;
 
@@ -22,6 +23,7 @@ public class SAXTest {
 		
 		List<Author> authors = db.getAuthors();
 		List<Department> departments = db.getDepartments();
+		List<Publication> publications = db.getPublications();
 		
 		System.out.println("Authors");
 		for(Author a : authors) {
@@ -31,6 +33,11 @@ public class SAXTest {
 		System.out.println("Departments");
 		for(Department d : departments) {
 			System.out.println(d);
+		}
+		
+		System.out.println("Publications");
+		for(Publication p : publications) {
+			System.out.println(p);
 		}
 	}
 

@@ -39,14 +39,15 @@ public class ElementHandler extends DefaultHandler {
 	private boolean dNameElement;
 	
 	private boolean pElement;
-	private boolean pId;
-	private boolean pType;
-	private boolean pName;
-	private boolean pYear;
+	private boolean pIdElement;
+	private boolean pTypeElement;
+	private boolean pNameElement;
+	private boolean pYearElement;
 	private List<Integer> authorsList;
-	private boolean pAuthors;
-	private boolean pISBN;
-	private boolean pCitations;
+	private boolean pAuthorsElement;
+	private boolean pISBNElement;
+	private boolean pUrlElement;
+	private boolean pCitationsElement;
 	
 	public ElementHandler() {
 		super();
@@ -101,7 +102,10 @@ public class ElementHandler extends DefaultHandler {
 	      if (Config.PUBLICATION.equals(qName)) {
 		     System.out.println("End Element :" + qName);
 		     pElement = false;
-		     //publications.add(publicationBuilder.build());
+		     int[] aList = authorsList.stream().mapToInt(i -> i).toArray();
+		     authorsList = new ArrayList<>();
+		     publicationBuilder.buildAuthors(aList);
+		     publications.add(publicationBuilder.build());
 		  }
 	   }
 	
@@ -147,7 +151,38 @@ public class ElementHandler extends DefaultHandler {
 		}
 		
 		if(pElement) {
-			return;
+			if(pIdElement) {
+				publicationBuilder.buildId(Integer.parseInt(new String(ch, start, length)));
+				pIdElement = false;
+			}
+			if(pTypeElement) {
+				publicationBuilder.buildType(new String(ch, start, length));
+				pTypeElement = false;
+			}
+			if(pNameElement) {
+				publicationBuilder.buildName(new String(ch, start, length));
+				pNameElement = false;
+			}
+			if(pYearElement) {
+				publicationBuilder.buildYear(new String(ch, start, length));
+				pYearElement = false;
+			}
+			if(pAuthorsElement) {
+				authorsList.add(Integer.parseInt(new String(ch, start, length)));
+				pAuthorsElement = false;
+			}
+			if(pISBNElement) {
+				publicationBuilder.buildISBN(new String(ch, start, length));
+				pISBNElement = false;
+			}
+			if(pUrlElement) {
+				publicationBuilder.buildUrl(new String(ch, start, length));
+				pUrlElement = false;
+			}
+			if(pCitationsElement) {
+				publicationBuilder.buildCitations(Integer.parseInt(new String(ch, start, length)));
+				pCitationsElement = false;
+			}
 		}
 	}
 	
@@ -155,21 +190,27 @@ public class ElementHandler extends DefaultHandler {
 		if(aElement) {
 			if("id".equalsIgnoreCase(qName)) {
 				aIdElement=true;
+				return;
 			}
 			if("firstname".equalsIgnoreCase(qName)) {
 				aFirstname=true;
+				return;
 			}
 			if("lastname".equalsIgnoreCase(qName)) {
 				aLastname=true;
+				return;
 			}
 			if("address".equalsIgnoreCase(qName)) {
 				aAddress=true;
+				return;
 			}
 			if("mobile".equalsIgnoreCase(qName)) {
 				aMobile=true;
+				return;
 			}
 			if("departmentId".equalsIgnoreCase(qName)) {
 				aAffiliation=true;
+				return;
 			}
 			
 		}
@@ -186,7 +227,30 @@ public class ElementHandler extends DefaultHandler {
 		}
 		
 		if(pElement) {
-			return;
+			if("id".equalsIgnoreCase(qName)) {
+				pIdElement=true;
+			}
+			if("type".equalsIgnoreCase(qName)) {
+				pTypeElement=true;
+			}
+			if("name".equalsIgnoreCase(qName)) {
+				pNameElement=true;
+			}
+			if("year".equalsIgnoreCase(qName)) {
+				pYearElement=true;
+			}
+			if("authorId".equalsIgnoreCase(qName)) {
+				pAuthorsElement=true;
+			}
+			if("ISBN".equalsIgnoreCase(qName)) {
+				pISBNElement=true;
+			}
+			if("URL".equalsIgnoreCase(qName)) {
+				pUrlElement=true;
+			}
+			if("citations".equalsIgnoreCase(qName)) {
+				pCitationsElement=true;
+			}
 		}
 		
 	}
