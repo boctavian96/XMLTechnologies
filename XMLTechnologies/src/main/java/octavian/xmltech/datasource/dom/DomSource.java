@@ -18,6 +18,7 @@ import octavian.xmltech.datasource.DataSource;
 
 public class DomSource implements DataSource {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Database readSource() {
 		
@@ -30,9 +31,7 @@ public class DomSource implements DataSource {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		Element root = document.getRootElement();
-		
+			
 		List<Node> nodesAuthors = document.selectNodes("/database/authors");
 		List<Node> nodesDepartments = document.selectNodes("/database/departments");
 		List<Node> nodesPublications = document.selectNodes("/database/publications");
@@ -40,6 +39,7 @@ public class DomSource implements DataSource {
 		return new Database(readAuthors(nodesAuthors), readDepartments(nodesDepartments), readPublications(nodesPublications));
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Author> readAuthors(List<Node> nodes){
 		List<Author> authors = new ArrayList<>();
 		for (Node node : nodes) {
@@ -73,6 +73,7 @@ public class DomSource implements DataSource {
 		return departments;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Publication> readPublications(List<Node> nodes){
 		List<Publication> publications = new ArrayList<>();
 		for(Node node : nodes) {
