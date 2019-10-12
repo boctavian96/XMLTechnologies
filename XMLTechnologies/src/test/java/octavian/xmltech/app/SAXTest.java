@@ -1,0 +1,37 @@
+package octavian.xmltech.app;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import octavian.xmltech.datamodel.Author;
+import octavian.xmltech.datamodel.Database;
+import octavian.xmltech.datamodel.Department;
+import octavian.xmltech.datasource.DataSource;
+import octavian.xmltech.datasource.sax.SaxSource;
+
+public class SAXTest {
+
+	@Test
+	public void test() {
+		DataSource ds = new SaxSource();
+		
+		Database db = ds.readSource();
+		
+		List<Author> authors = db.getAuthors();
+		List<Department> departments = db.getDepartments();
+		
+		System.out.println("Authors");
+		for(Author a : authors) {
+			System.out.println(a);
+		}
+		
+		System.out.println("Departments");
+		for(Department d : departments) {
+			System.out.println(d);
+		}
+	}
+
+}

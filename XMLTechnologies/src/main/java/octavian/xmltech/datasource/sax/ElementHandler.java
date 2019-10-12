@@ -2,7 +2,6 @@ package octavian.xmltech.datasource.sax;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -12,23 +11,42 @@ import octavian.xmltech.app.Config;
 import octavian.xmltech.datamodel.Author;
 import octavian.xmltech.datamodel.Department;
 import octavian.xmltech.datamodel.Publication;
+import octavian.xmltech.datamodel.builder.AuthorBuilder;
 import octavian.xmltech.datamodel.builder.DepartmentBuilder;
+import octavian.xmltech.datamodel.builder.PublicationBuilder;
 
 public class ElementHandler extends DefaultHandler {
 	
 	private DepartmentBuilder departmentBuilder;
+	private AuthorBuilder authorBuilder;
+	private PublicationBuilder publicationBuilder;
 
 	private List<Author> authors;
 	private List<Department> departments;
 	private List<Publication> publications;
 	
 	private boolean aElement;
+	private boolean aIdElement;
+	private boolean aFirstname;
+	private boolean aLastname;
+	private boolean aAddress;
+	private boolean aMobile;
+	private List<Integer> affiliationList;
+	private boolean aAffiliation;
 	
 	private boolean dElement;
 	private boolean dIdElement;
 	private boolean dNameElement;
 	
 	private boolean pElement;
+	private boolean pId;
+	private boolean pType;
+	private boolean pName;
+	private boolean pYear;
+	private List<Integer> authorsList;
+	private boolean pAuthors;
+	private boolean pISBN;
+	private boolean pCitations;
 	
 	public ElementHandler() {
 		super();
@@ -36,7 +54,12 @@ public class ElementHandler extends DefaultHandler {
 		departments = new ArrayList<>();
 		publications = new ArrayList<>();
 		
+		affiliationList = new ArrayList<>();
+		authorsList = new ArrayList<>();
+		
 		departmentBuilder = new DepartmentBuilder();
+		authorBuilder = new AuthorBuilder();
+		publicationBuilder = new PublicationBuilder();
 	}
 	
 	@Override
@@ -63,7 +86,10 @@ public class ElementHandler extends DefaultHandler {
 	      if (Config.AUTHOR.equals(qName)) {
 	         System.out.println("End Element :" + qName);
 	         aElement = false;
-	         //authors.add(authorBuilder.build());
+	         int[] aList = affiliationList.stream().mapToInt(i -> i).toArray();
+	         authorBuilder.buildAffiliations(aList);
+	         affiliationList = new ArrayList<>();
+	         authors.add(authorBuilder.build());
 	      }
 	      
 	      if (Config.DEPARTMENT.equals(qName)) {
@@ -83,7 +109,30 @@ public class ElementHandler extends DefaultHandler {
 	public void characters(char ch[], int start, int length) {
 		
 		if(aElement) {
-			return;
+			if(aIdElement) {
+				authorBuilder.buildId(Integer.parseInt(new String(ch, start, length)));
+				aIdElement=false;
+			}
+			if(aFirstname) {
+				authorBuilder.buildFirstName(new String(ch, start, length));
+				aFirstname=false;
+			}
+			if(aLastname) {
+				authorBuilder.buildLastName(new String(ch, start, length));
+				aLastname=false;
+			}
+			if(aAddress) {
+				authorBuilder.buildAddress(new String(ch, start, length));
+				aAddress=false;
+			}
+			if(aMobile) {
+				authorBuilder.buildMobile(new String(ch, start, length));
+				aMobile=false;
+			}
+			if(aAffiliation) {
+				affiliationList.add(Integer.parseInt(new String(ch, start, length)));
+				aAffiliation=false;
+			}
 		}
 		
 		if(dElement) {
@@ -104,7 +153,25 @@ public class ElementHandler extends DefaultHandler {
 	
 	private void evaluateElement(String qName) {
 		if(aElement) {
-			return;
+			if("id".equalsIgnoreCase(qName)) {
+				aIdElement=true;
+			}
+			if("firstname".equalsIgnoreCase(qName)) {
+				aFirstname=true;
+			}
+			if("lastname".equalsIgnoreCase(qName)) {
+				aLastname=true;
+			}
+			if("address".equalsIgnoreCase(qName)) {
+				aAddress=true;
+			}
+			if("mobile".equalsIgnoreCase(qName)) {
+				aMobile=true;
+			}
+			if("departmentId".equalsIgnoreCase(qName)) {
+				aAffiliation=true;
+			}
+			
 		}
 		
 		if(dElement) {
