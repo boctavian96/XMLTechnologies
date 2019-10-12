@@ -32,9 +32,9 @@ public class DomSource implements DataSource {
 			e.printStackTrace();
 		}
 			
-		List<Node> nodesAuthors = document.selectNodes("/database/authors");
-		List<Node> nodesDepartments = document.selectNodes("/database/departments");
-		List<Node> nodesPublications = document.selectNodes("/database/publications");
+		List<Node> nodesAuthors = document.selectNodes("/database/authors/author");
+		List<Node> nodesDepartments = document.selectNodes("/database/departments/department");
+		List<Node> nodesPublications = document.selectNodes("/database/publications/publication");
 		
 		return new Database(readAuthors(nodesAuthors), readDepartments(nodesDepartments), readPublications(nodesPublications));
 	}
@@ -49,10 +49,10 @@ public class DomSource implements DataSource {
 			String address = node.selectSingleNode("address").getText();
 			String mobile = node.selectSingleNode("mobile").getText();
 			
-			List<Node> dNodes = node.selectNodes("departments");
+			List<Node> dNodes = node.selectNodes("affiliations/departmentId");
 			int[] affiliations = new int[dNodes.size()];
 			for(int i=0; i<affiliations.length; i++) {
-				affiliations[i] = Integer.parseInt(dNodes.get(i).selectSingleNode("departmentId").getText());
+				affiliations[i] = Integer.parseInt(dNodes.get(i).getText());
 			}
 			
 			authors.add(new Author(id, fName, lName, address, mobile, affiliations));
@@ -85,10 +85,10 @@ public class DomSource implements DataSource {
 			String uRL = node.selectSingleNode("URL").getText();
 			int citations = Integer.parseInt(node.selectSingleNode("citations").getText());
 			
-			List<Node> aNodes = node.selectNodes("authors");
+			List<Node> aNodes = node.selectNodes("authors/authorId");
 			int[] authors = new int[aNodes.size()];
 			for(int i=0; i<authors.length; i++) {
-				authors[i] = Integer.parseInt(aNodes.get(i).selectSingleNode("authorId").getText());
+				authors[i] = Integer.parseInt(aNodes.get(i).getText());
 			}
 			
 			publications.add(new Publication(id, type, name, year, authors, iSBN, uRL, citations));

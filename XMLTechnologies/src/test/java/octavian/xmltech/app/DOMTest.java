@@ -11,14 +11,14 @@ import octavian.xmltech.datamodel.Database;
 import octavian.xmltech.datamodel.Department;
 import octavian.xmltech.datamodel.Publication;
 import octavian.xmltech.datasource.DataSource;
-import octavian.xmltech.datasource.sax.SaxSource;
+import octavian.xmltech.datasource.dom.DomSource;
 
-public class SAXTest {
+public class DOMTest {
 
 	@Test
 	public void test() {
-		DataSource ds = new SaxSource();
-		Database db = ds.readSource();
+		DataSource dataSource = new DomSource();
+		Database db = dataSource.readSource();
 		
 		List<Author> authors = db.getAuthors();
 		List<Department> departments = db.getDepartments();
@@ -38,6 +38,8 @@ public class SAXTest {
 		for(Publication p : publications) {
 			System.out.println(p);
 		}
+		
+		
 	}
 
 }
