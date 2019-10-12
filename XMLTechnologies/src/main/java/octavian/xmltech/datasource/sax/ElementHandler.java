@@ -28,13 +28,13 @@ public class ElementHandler extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		if(Config.AUTHOR.equals(qName)) {
-			
+			//TODO:
 		}
 		if(Config.DEPARTMENT.equals(qName)) {
-			
+			//TODO;
 		}
 		if(Config.PUBLICATION.equals(qName)) {
-			
+			//TODO;
 		}
 	}
 	
@@ -50,5 +50,4 @@ public class ElementHandler extends DefaultHandler {
 		return this.publications;
 	}
 		
-	}
 }
