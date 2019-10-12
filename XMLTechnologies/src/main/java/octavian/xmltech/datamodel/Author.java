@@ -11,6 +11,10 @@ public class Author{
     private String mobile;
     private int[] affiliations;
     
+    public Author() {
+    	super();
+    }
+    
     public Author(int id, String fName, String lName, String address, String mobile, int[] affiliations){
         super();
         this.id = id;
