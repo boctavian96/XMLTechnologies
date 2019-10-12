@@ -5,16 +5,18 @@ import java.util.Arrays;
 public class Publication {
 	private int id;
 	private String type;
+	private String name;
 	private String year;
 	private int[] authors;
 	private String ISBN;
 	private String URL;
 	private int citations;
 	
-	public Publication(int id, String type, String year, int[] authors, String iSBN, String uRL, int citations) {
+	public Publication(int id, String type, String name, String year, int[] authors, String iSBN, String uRL, int citations) {
 		super();
 		this.id = id;
 		this.type = type;
+		this.name = name;
 		this.year = year;
 		this.authors = authors;
 		ISBN = iSBN;
@@ -36,6 +38,14 @@ public class Publication {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getYear() {
@@ -87,6 +97,7 @@ public class Publication {
 		result = prime * result + Arrays.hashCode(authors);
 		result = prime * result + citations;
 		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((year == null) ? 0 : year.hashCode());
 		return result;
@@ -117,6 +128,11 @@ public class Publication {
 			return false;
 		if (id != other.id)
 			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
 		if (type == null) {
 			if (other.type != null)
 				return false;
@@ -132,8 +148,10 @@ public class Publication {
 
 	@Override
 	public String toString() {
-		return "Publication [id=" + id + ", type=" + type + ", year=" + year + ", authors=" + Arrays.toString(authors)
-				+ ", ISBN=" + ISBN + ", URL=" + URL + ", citations=" + citations + "]";
+		return "Publication [id=" + id + ", type=" + type + ", name=" + name + ", year=" + year + ", authors="
+				+ Arrays.toString(authors) + ", ISBN=" + ISBN + ", URL=" + URL + ", citations=" + citations + "]";
 	}
 	
+	
+
 }
