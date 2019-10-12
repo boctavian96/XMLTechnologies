@@ -12,7 +12,7 @@
                 <affiliations>
                     <departmentId>1</departmentId>
                 </affiliations>
-            <author>
+            </author>
                 
             <author>
                 <id>2</id>
@@ -24,7 +24,7 @@
                     <departmentId>1</departmentId>
                     <departmentId>2</departmentId>
                 </affiliations>
-            <author>
+            </author>
                 
             <author>
                 <id>3</id>
@@ -38,7 +38,7 @@
                     <departmentId>3</departmentId>
                     <departmentId>4</departmentId>
                 </affiliations>
-            <author>
+            </author>
                 
             <author>
                 <id>4</id>
@@ -49,31 +49,31 @@
                 <affiliations>
                     <departmentId>3</departmentId>
                 </affiliations>
-            <author>
+            </author>
         </authors>
         
-        <!-- Departaments table -->
-        <departaments>
-            <departament>
+        <!-- departments table -->
+        <departments>
+            <department>
                 <id>1</id>
                 <name>Facultatea de Matematica si Informatica</name>
-            <departament>
+            </department>
                 
-            <departament>
+            <department>
                 <id>2</id>
                 <name>Facultatea de Economie si Administrare a afacerilor</name>
-            <departament>
+            </department>
                 
-            <departament>
+            <department>
                 <id>3</id>
                 <name>Facultatea de Filosofie si Gandire Abstracta</name>
-            <departament>
+            </department>
                 
-            <departament>
+            <department>
                 <id>4</id>
                 <name>Facultatea de Arte Frumoase</name>
-            <departament>
-        </departaments>
+            </department>
+        </departments>
         
         <!-- Publications table -->
         <publications>
@@ -84,7 +84,7 @@
                 <year>2019</year>
                 <authors>
                     <authorId>3</authorId>
-                <authors>
+                </authors>
                 <ISBN>12345678</ISBN>
                 <URL>google.com</URL>
                 <citations>6320550</citations>
@@ -97,7 +97,7 @@
                 <year>2018</year>
                 <authors>
                     <authorId>1</authorId>
-                <authors>
+                </authors>
                 <ISBN>11111128</ISBN>
                 <URL>https://techdifferences.com/difference-between-microkernel-and-monolithic-kernel.html</URL>
                 <citations>50000</citations>
@@ -111,7 +111,7 @@
                 <authors>
                     <authorId>3</authorId>
                     <authorId>4</authorId>
-                <authors>
+                </authors>
                 <ISBN>2222222</ISBN>
                 <URL>https://michelewoodward.com/2007/07/22/the-art-of-being-lazy/</URL>
                 <citations>550</citations>
@@ -124,7 +124,7 @@
                 <year>2009</year>
                 <authors>
                     <authorId>3</authorId>
-                <authors>
+                </authors>
                 <ISBN>12333111</ISBN>
                 <URL>howtodrawamonkey.com</URL>
                 <citations>300423032210</citations>
@@ -137,7 +137,7 @@
                 <year>2019</year>
                 <authors>
                     <authorId>4</authorId>
-                <authors>
+                </authors>
                 <ISBN>Q124333</ISBN>
                 <URL>mahCofee.com</URL>
                 <citations>2140513</citations>
@@ -150,7 +150,7 @@
                 <year>2019</year>
                 <authors>
                     <authorId>2</authorId>
-                <authors>
+                </authors>
                 <ISBN>F13r10</ISBN>
                 <URL>iwantmoneyz.com</URL>
                 <citations>10215302532</citations>
@@ -164,7 +164,7 @@
                 <authors>
                     <authorId>2</authorId>
                     <authorId>4</authorId>
-                <authors>
+                </authors>
                 <ISBN>D21400</ISBN>
                 <URL>google.com</URL>
                 <citations>6320</citations>
