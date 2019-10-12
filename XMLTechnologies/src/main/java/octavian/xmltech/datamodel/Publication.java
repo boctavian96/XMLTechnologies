@@ -23,6 +23,15 @@ public class Publication {
 		URL = uRL;
 		this.citations = citations;
 	}
+	
+	public boolean hasAuthor(int authorId) {
+		for(int i : authors) {
+			if (i == authorId) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public int getId() {
 		return id;
@@ -151,6 +160,7 @@ public class Publication {
 		return "Publication [id=" + id + ", type=" + type + ", name=" + name + ", year=" + year + ", authors="
 				+ Arrays.toString(authors) + ", ISBN=" + ISBN + ", URL=" + URL + ", citations=" + citations + "]";
 	}
+	
 	
 	
 

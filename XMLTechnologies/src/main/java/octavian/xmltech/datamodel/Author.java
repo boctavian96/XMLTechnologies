@@ -24,6 +24,15 @@ public class Author{
         this.mobile = mobile;
         this.affiliations = affiliations;
     }
+    
+    public boolean hasAffiliation(int department) {
+    	for(int affiliation : affiliations) {
+    		if(affiliation == department) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 
 	public int getId() {
 		return id;
