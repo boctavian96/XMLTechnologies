@@ -20,9 +20,15 @@ public class SAXTest {
 		DataSource ds = new SaxSource();
 		Database db = ds.readSource();
 		
+		assertNotNull(db);
+		
 		List<Author> authors = db.getAuthors();
 		List<Department> departments = db.getDepartments();
 		List<Publication> publications = db.getPublications();
+		
+		assertNotNull(authors);
+		assertNotNull(departments);
+		assertNotNull(publications);
 		
 		System.out.println("Authors");
 		for(Author a : authors) {

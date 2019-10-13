@@ -19,10 +19,17 @@ public class DOMTest {
 	public void test() {
 		DataSource dataSource = new DomSource();
 		Database db = dataSource.readSource();
+
+		assertNotNull(db);
+
 		
 		List<Author> authors = db.getAuthors();
 		List<Department> departments = db.getDepartments();
 		List<Publication> publications = db.getPublications();
+		
+		assertNotNull(authors);
+		assertNotNull(departments);
+		assertNotNull(publications);
 		
 		System.out.println("Authors");
 		for(Author a : authors) {
