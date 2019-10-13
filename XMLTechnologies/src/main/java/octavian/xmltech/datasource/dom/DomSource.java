@@ -4,8 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.dom4j.Document;
 import org.dom4j.Node;
+import org.dom4j.io.DOMReader;
 import org.dom4j.io.SAXReader;
 
 import octavian.xmltech.app.Config;
@@ -22,11 +26,18 @@ public class DomSource implements DataSource {
 	public Database readSource() {
 		
 		File xmlDatabase = new File(Config.DATABASE_FILE);
-		SAXReader reader = new SAXReader();
+		DOMReader reader = new DOMReader();
+		
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+        org.w3c.dom.Document doc;
+		
 		Document document = null;
 		
 		try {
-			document = reader.read(xmlDatabase);
+	        dBuilder = dbFactory.newDocumentBuilder();
+	        doc = dBuilder.parse(xmlDatabase);
+			document = reader.read(doc);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
