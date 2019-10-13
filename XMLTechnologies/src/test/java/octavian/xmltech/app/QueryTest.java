@@ -23,6 +23,11 @@ public class QueryTest {
 	private Database databaseSax = saxSource.readSource();
 	
 	@Test
+	public void testDatabases() {
+		assertEquals(databaseDom, databaseSax);
+	}
+	
+	@Test
 	public void testDOMAutor() {		
 		Query query = new Query(databaseDom);
 		
@@ -30,6 +35,11 @@ public class QueryTest {
 		List<Publication> autor2 = query.selectForAuthors(2);
 		List<Publication> autor3 = query.selectForAuthors(3);
 		List<Publication> autor4 = query.selectForAuthors(4);
+		
+		assertNotNull(autor1);
+		assertNotNull(autor2);
+		assertNotNull(autor3);
+		assertNotNull(autor4);
 		
 		System.out.println();
 		print(autor1);
@@ -49,6 +59,10 @@ public class QueryTest {
 		List<Publication> conferinte = query.selectCategory("Conferinta");
 		List<Publication> vc = query.selectCategory("Volum Colectiv");
 		
+		assertNotNull(jurnale);
+		assertNotNull(conferinte);
+		assertNotNull(vc);
+		
 		System.out.println("\n----------Jurnale----------\n");
 		print(jurnale);
 		System.out.println("\n----------Conferinte----------\n");
@@ -66,6 +80,11 @@ public class QueryTest {
 		List<Publication> departament3 = query.selectForUniversity(3);
 		List<Publication> departament4 = query.selectForUniversity(4);
 		
+		assertNotNull(departament1);
+		assertNotNull(departament2);
+		assertNotNull(departament3);
+		assertNotNull(departament4);
+		
 		System.out.println();
 		print(departament1);
 		System.out.println();
@@ -75,11 +94,6 @@ public class QueryTest {
 		System.out.println();
 		print(departament4);
 	
-	}
-	
-	@Test
-	public void testSAX() {
-		fail("Not yet implemented");
 	}
 	
 	private void print(List list) {
