@@ -10,7 +10,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.dom4j.Document;
 import org.dom4j.Node;
 import org.dom4j.io.DOMReader;
-import org.dom4j.io.SAXReader;
 
 import octavian.xmltech.app.Config;
 import octavian.xmltech.datamodel.Author;
@@ -42,8 +41,7 @@ public class DomSource implements DataSource {
 			e.printStackTrace();
 		}
 			
-		List<Node> nodesAuthors = document.selectNodes(
-				"/database/authors/author");
+		List<Node> nodesAuthors = document.selectNodes("/database/authors/author");
 		List<Node> nodesDepartments = document.selectNodes("/database/departments/department");
 		List<Node> nodesPublications = document.selectNodes("/database/publications/publication");
 		

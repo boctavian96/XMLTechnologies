@@ -136,7 +136,5 @@ public class Author{
 		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + ", address=" + address + ", mobile="
 				+ mobile + ", affiliations=" + Arrays.toString(affiliations) + "]";
 	}
-    
-    
 
 }
