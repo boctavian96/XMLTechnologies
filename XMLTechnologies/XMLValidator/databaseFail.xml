@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:databeis xmlns:tns="http://www.example.org/NewXMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/NewXMLSchema databaseSchema.xsd ">
+  <tns:authors>
+    <tns:author>
+      <tns:id>1</tns:id>
+      <tns:firstname>tns:firstname</tns:firstname>
+      <tns:lastname>tns:lastname</tns:lastname>
+      <tns:address>tns:address</tns:address>
+      <tns:mobile>tns:mobile</tns:mobile>
+      <tns:affiliations>
+        <tns:departmentId>1</tns:departmentId>
+      </tns:affiliations>
+    </tns:author>
+  </tns:authors>
+  <tns:departments>
+    <tns:department>
+      <tns:id>1</tns:id>
+      <tns:name>tns:name</tns:name>
+    </tns:department>
+  </tns:departments>
+  <tns:publications>
+    <tns:publication>
+      <tns:id>1</tns:id>
+      <tns:type>Journal</tns:type>
+      <tns:name>tns:name</tns:name>
+      <tns:year>1</tns:year>
+      <tns:authors>
+        <tns:authorId>1</tns:authorId>
+      </tns:authors>
+      <tns:ISBN>tns:ISBN</tns:ISBN>
+      <tns:URL>tns:URL</tns:URL>
+      <tns:citations>tns:citations</tns:citations>
+    </tns:publication>
+  </tns:publications>
+</tns:database>
