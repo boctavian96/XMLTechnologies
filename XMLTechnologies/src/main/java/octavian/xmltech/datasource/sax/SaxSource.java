@@ -22,7 +22,7 @@ public class SaxSource implements DataSource{
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		ElementHandler elementHandler = new ElementHandler();
 
-		SAXParser parser = null;
+		SAXParser parser;
 		try {
 			parser = factory.newSAXParser();
 			parser.parse(database, elementHandler);
