@@ -45,5 +45,11 @@ public class SAXTest {
 			System.out.println(p);
 		}
 	}
+	
+	@Test
+	public void testAuthor() {
+		DataSource ds = new SaxSource();
+		
+	}
 
 }

@@ -10,29 +10,20 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 
 import octavian.xmltech.app.Config;
-import octavian.xmltech.datamodel.Database;
-import octavian.xmltech.datasource.DataSource;
 
-public class SaxSource implements DataSource{
-
-	@Override
-	public Database readSource() {
-		
+public class SimpleSax {
+	public void parse(String element, int id) {
 		File database = new File(Config.DATABASE_FILE);
 		SAXParserFactory factory = SAXParserFactory.newInstance();
-		ElementHandler elementHandler = new ElementHandler();
-		//SimpleQueryHandler queryHandler = new SimpleQueryHandler("author", 1);
+		//ElementHandler elementHandler = new ElementHandler();
+		SimpleQueryHandler queryHandler = new SimpleQueryHandler(element, id);
 
 		SAXParser parser;
 		try {
 			parser = factory.newSAXParser();
-			parser.parse(database, elementHandler);
+			parser.parse(database, queryHandler);
 		}catch (SAXException | IOException | ParserConfigurationException e) {
 			e.printStackTrace();
 		}
-		
-		return new Database(elementHandler.getAuthors(), elementHandler.getDepartments(), elementHandler.getPublications());
-
 	}
-
 }

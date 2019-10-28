@@ -1,52 +1,45 @@
 package octavian.xmltech.datasource.sax;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 import octavian.xmltech.app.Config;
 import octavian.xmltech.datamodel.Author;
 import octavian.xmltech.datamodel.Department;
 import octavian.xmltech.datamodel.Publication;
-import octavian.xmltech.datamodel.builder.AuthorBuilder;
-import octavian.xmltech.datamodel.builder.DepartmentBuilder;
-import octavian.xmltech.datamodel.builder.PublicationBuilder;
 
-public class ElementHandler extends BasicHandler {
+public class SimpleQueryHandler extends BasicHandler {
 
-	protected List<Author> authors;
-	protected List<Department> departments;
-	protected List<Publication> publications;
+	private String elementType;
+	private int id;
 
-	public ElementHandler() {
+	private Author author;
+	private Department department;
+	private Publication publication;
+
+	private boolean searchedObject;
+	private boolean done;
+
+	public SimpleQueryHandler(String elementType, int id) {
 		super();
-		authors = new ArrayList<>();
-		departments = new ArrayList<>();
-		publications = new ArrayList<>();
-
-		affiliationList = new ArrayList<>();
-		authorsList = new ArrayList<>();
-
-		departmentBuilder = new DepartmentBuilder();
-		authorBuilder = new AuthorBuilder();
-		publicationBuilder = new PublicationBuilder();
+		this.elementType = elementType;
+		this.id = id;
 	}
 
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
-		if (Config.AUTHOR.equals(qName)) {
+		if (Config.AUTHOR.equals(qName) && Config.AUTHOR.equalsIgnoreCase(elementType)) {
 			aElement = true;
 			return;
 		}
-		if (Config.DEPARTMENT.equals(qName)) {
+		if (Config.DEPARTMENT.equals(qName) && Config.DEPARTMENT.equalsIgnoreCase(elementType)) {
 			dElement = true;
 			return;
 		}
-		if (Config.PUBLICATION.equals(qName)) {
+		if (Config.PUBLICATION.equals(qName) && Config.PUBLICATION.equalsIgnoreCase(elementType)) {
 			pElement = true;
 			return;
 		}
@@ -54,69 +47,50 @@ public class ElementHandler extends BasicHandler {
 	}
 
 	@Override
-	public void endElement(String uri, String localName, String qName) {
-
-		if (Config.AUTHOR.equals(qName)) {
-			System.out.println("End Element :" + qName);
-			aElement = false;
-			int[] aList = affiliationList.stream().mapToInt(i -> i).toArray();
-			authorBuilder.buildAffiliations(aList);
-			affiliationList = new ArrayList<>();
-			authors.add(authorBuilder.build());
-		}
-
-		if (Config.DEPARTMENT.equals(qName)) {
-			System.out.println("End Element :" + qName);
-			dElement = false;
-			departments.add(departmentBuilder.build());
-		}
-
-		if (Config.PUBLICATION.equals(qName)) {
-			System.out.println("End Element :" + qName);
-			pElement = false;
-			int[] aList = authorsList.stream().mapToInt(i -> i).toArray();
-			authorsList = new ArrayList<>();
-			publicationBuilder.buildAuthors(aList);
-			publications.add(publicationBuilder.build());
-		}
-	}
-
-	@Override
-	public void characters(char ch[], int start, int length) {
-
+	public void characters(char ch[], int start, int length) throws SAXException {
 		if (aElement) {
-			if (aIdElement) {
-				authorBuilder.buildId(Integer.parseInt(new String(ch, start, length)));
-				aIdElement = false;
+			if (aIdElement && !done) {
+				int localId = Integer.parseInt(new String(ch, start, length));
+				if (id == localId) {
+					searchedObject = true;
+					authorBuilder.buildId(localId);
+					aIdElement = false;
+				}
+
 			}
-			if (aFirstname) {
+			if (aFirstname && searchedObject) {
 				authorBuilder.buildFirstName(new String(ch, start, length));
 				aFirstname = false;
 			}
-			if (aLastname) {
+			if (aLastname && searchedObject) {
 				authorBuilder.buildLastName(new String(ch, start, length));
 				aLastname = false;
 			}
-			if (aAddress) {
+			if (aAddress && searchedObject) {
 				authorBuilder.buildAddress(new String(ch, start, length));
 				aAddress = false;
 			}
-			if (aMobile) {
+			if (aMobile && searchedObject) {
 				authorBuilder.buildMobile(new String(ch, start, length));
 				aMobile = false;
 			}
-			if (aAffiliation) {
+			if (aAffiliation && searchedObject) {
 				affiliationList.add(Integer.parseInt(new String(ch, start, length)));
 				aAffiliation = false;
 			}
 		}
 
 		if (dElement) {
-			if (dIdElement) {
-				departmentBuilder.buildId(Integer.parseInt(new String(ch, start, length)));
-				dIdElement = false;
+			if (dIdElement && !done) {
+				int localId = Integer.parseInt(new String(ch, start, length));
+				if (id == localId) {
+					searchedObject = true;
+					departmentBuilder.buildId(localId);
+					dIdElement = false;
+				}
+
 			}
-			if (dNameElement) {
+			if (dNameElement && searchedObject) {
 				departmentBuilder.buildName(new String(ch, start, length));
 				dNameElement = false;
 			}
@@ -124,37 +98,80 @@ public class ElementHandler extends BasicHandler {
 
 		if (pElement) {
 			if (pIdElement) {
-				publicationBuilder.buildId(Integer.parseInt(new String(ch, start, length)));
 				pIdElement = false;
+
+				int localId = Integer.parseInt(new String(ch, start, length));
+				if (id == localId) {
+					searchedObject = true;
+					publicationBuilder.buildId(localId);
+					pIdElement = false;
+				}
 			}
-			if (pTypeElement) {
+			if (pTypeElement && searchedObject) {
 				publicationBuilder.buildType(new String(ch, start, length));
 				pTypeElement = false;
 			}
-			if (pNameElement) {
+			if (pNameElement && searchedObject) {
 				publicationBuilder.buildName(new String(ch, start, length));
 				pNameElement = false;
 			}
-			if (pYearElement) {
+			if (pYearElement && searchedObject) {
 				publicationBuilder.buildYear(new String(ch, start, length));
 				pYearElement = false;
 			}
-			if (pAuthorsElement) {
+			if (pAuthorsElement && searchedObject) {
 				authorsList.add(Integer.parseInt(new String(ch, start, length)));
 				pAuthorsElement = false;
 			}
-			if (pISBNElement) {
+			if (pISBNElement && searchedObject) {
 				publicationBuilder.buildISBN(new String(ch, start, length));
 				pISBNElement = false;
 			}
-			if (pUrlElement) {
+			if (pUrlElement && searchedObject) {
 				publicationBuilder.buildUrl(new String(ch, start, length));
 				pUrlElement = false;
 			}
-			if (pCitationsElement) {
+			if (pCitationsElement && searchedObject) {
 				publicationBuilder.buildCitations(Integer.parseInt(new String(ch, start, length)));
 				pCitationsElement = false;
 			}
+		}
+	}
+
+	@Override
+	public void endElement(String uri, String localName, String qName) {
+		if (Config.AUTHOR.equals(qName) && Config.AUTHOR.equalsIgnoreCase(elementType) && !done) {
+			System.out.println("End Element :" + qName);
+			aElement = false;
+			int[] aList = affiliationList.stream().mapToInt(i -> i).toArray();
+			authorBuilder.buildAffiliations(aList);
+			affiliationList = new ArrayList<>();
+
+			// TODO: change this
+			System.out.println(authorBuilder.build());
+			searchedObject = false;
+			done = true;
+		}
+
+		if (Config.DEPARTMENT.equals(qName) && Config.DEPARTMENT.equalsIgnoreCase(elementType) && !done) {
+			System.out.println("End Element :" + qName);
+			dElement = false;
+			System.out.println(departmentBuilder.build());
+			/// departments.add(departmentBuilder.build());
+			searchedObject = false;
+			done = true;
+		}
+
+		if (Config.PUBLICATION.equals(qName) && Config.PUBLICATION.equalsIgnoreCase(elementType) && !done) {
+			System.out.println("End Element :" + qName);
+			pElement = false;
+			int[] aList = authorsList.stream().mapToInt(i -> i).toArray();
+			authorsList = new ArrayList<>();
+			publicationBuilder.buildAuthors(aList);
+			System.out.println(publicationBuilder.build());
+			/// publications.add(publicationBuilder.build());
+			searchedObject = false;
+			done = true;
 		}
 	}
 
@@ -225,18 +242,6 @@ public class ElementHandler extends BasicHandler {
 			}
 		}
 
-	}
-
-	public List<Author> getAuthors() {
-		return this.authors;
-	}
-
-	public List<Department> getDepartments() {
-		return this.departments;
-	}
-
-	public List<Publication> getPublications() {
-		return this.publications;
 	}
 
 }
