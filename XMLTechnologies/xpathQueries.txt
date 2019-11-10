@@ -1,0 +1,17 @@
+#Select all the authors.
+child::database/authors
+
+#Select all departments.
+child::database/departments
+
+#Select all the publications.
+child::database/publications
+
+#Select all the publications that have citations more than 10000.
+child::database/publications/publication[citations>10000]
+
+#Select all the publications that are journals.
+child::database/publications/publication[type="Jurnal"]
+
+#Multiple predicates.
+child::database/publications/publication[type="Jurnal" and id=4]
