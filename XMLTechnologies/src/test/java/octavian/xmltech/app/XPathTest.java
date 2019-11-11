@@ -79,14 +79,14 @@ public class XPathTest {
 	
 	@Test
 	public void testMultiplePredicates() {
-		System.out.println("Journals that have an specific ID");
+		System.out.println("Multiple predicates");
 		String twoPredicates = xPathSource.readSource("database/publications/publication[type=\"Jurnal\" and id=4]");
 		System.out.println(twoPredicates);
 	}
 	
 	@Test
 	public void testPredicates() {
-		System.out.println("Journals that have an specific ID");
+		System.out.println("Search for a specific author");
 		String twoPredicates = xPathSource.readSource("database/publications/publication[/authorId=3]");
 		System.out.println(twoPredicates);
 	}
@@ -100,7 +100,7 @@ public class XPathTest {
 	
 	@Test
 	public void testTwoQueries() {
-		System.out.println("Journals that have an specific ID");
+		System.out.println("Great Publications");
 		String twoPredicates = xPathSource.readSource("database/publications/publication[citations>10000]/name | /database/publications/publication[citations>10000]/authors/authorId");
 		System.out.println(twoPredicates);
 	}
@@ -108,7 +108,7 @@ public class XPathTest {
 	@Test
 	//ERROR :( 
 	public void testDaVinci() {
-		System.out.println("Journals that have an specific ID");
+		System.out.println("DaVinci's writings");
 		String twoPredicates = xPathSource.readSource("database/authors/author[lastname=\"Davinci\"] | /database/publication/publication/authors[authorId=3]");
 		System.out.println(twoPredicates);
 	}
