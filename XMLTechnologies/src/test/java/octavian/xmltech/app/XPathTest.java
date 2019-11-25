@@ -109,7 +109,14 @@ public class XPathTest {
 	//ERROR :( 
 	public void testDaVinci() {
 		System.out.println("DaVinci's writings");
-		String twoPredicates = xPathSource.readSource("database/authors/author[lastname=\"Davinci\"] | /database/publication/publication/authors[authorId=3]");
+		String twoPredicates = xPathSource.readSource("database/authors/author[lastname=\"Davinci\"] | /database/publications/publication[authors/authorId=3]");
+		System.out.println(twoPredicates);
+	}
+	
+	@Test
+	public void testDummyPredicate() {
+		System.out.println("FML");
+		String twoPredicates = xPathSource.readSource("/database/publications/publication");
 		System.out.println(twoPredicates);
 	}
 }
