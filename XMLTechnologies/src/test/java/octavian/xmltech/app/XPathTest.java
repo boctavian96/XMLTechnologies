@@ -106,7 +106,6 @@ public class XPathTest {
 	}
 
 	@Test
-	//ERROR :( 
 	public void testDaVinci() {
 		System.out.println("DaVinci's writings");
 		String twoPredicates = xPathSource.readSource("database/authors/author[lastname=\"Davinci\"] | /database/publications/publication[authors/authorId=3]");
