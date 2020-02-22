@@ -1,173 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database>
-        <!-- Authors table -->
-        <authors>
-            <author>
-                <id>1</id>
-                <firstname>Ionel</firstname>
-                <lastname>Tigla</lastname>
-                <address>Strada Nuferilor nr.2 Bucuresti</address>
-                <mobile>075210230</mobile>
-                <affiliations>
-                    <departmentId>1</departmentId>
-                </affiliations>
-            </author>
-                
-            <author>
-                <id>2</id>
-                <firstname>Dorin</firstname>
-                <lastname>Peste</lastname>
-                <address>Strada Carbunilor nr.18 Iasi</address>
-                <mobile>0723331110</mobile>
-                <affiliations>
-                    <departmentId>1</departmentId>
-                    <departmentId>2</departmentId>
-                </affiliations>
-            </author>
-                
-            <author>
-                <id>3</id>
-                <firstname>Leonardo</firstname>
-                <lastname>Davinci</lastname>
-                <address>Strada Victoria nr.1 Timisoara</address>
-                <mobile>035552315</mobile>
-                <affiliations>
-                    <departmentId>1</departmentId>
-                    <departmentId>2</departmentId>
-                    <departmentId>3</departmentId>
-                    <departmentId>4</departmentId>
-                </affiliations>
-            </author>
-                
-            <author>
-                <id>4</id>
-                <firstname>Dorel</firstname>
-                <lastname>Mesteru</lastname>
-                <address>Strada Mihai Viteazul nr.9 Timisoara</address>
-                <mobile>-</mobile>
-                <affiliations>
-                    <departmentId>3</departmentId>
-                </affiliations>
-            </author>
-        </authors>
-        
-        <!-- departments table -->
-        <departments>
-            <department>
-                <id>1</id>
-                <name>Facultatea de Matematica si Informatica</name>
-            </department>
-                
-            <department>
-                <id>2</id>
-                <name>Facultatea de Economie si Administrare a afacerilor</name>
-            </department>
-                
-            <department>
-                <id>3</id>
-                <name>Facultatea de Filosofie si Gandire Abstracta</name>
-            </department>
-                
-            <department>
-                <id>4</id>
-                <name>Facultatea de Arte Frumoase</name>
-            </department>
-        </departments>
-        
-        <!-- Publications table -->
-        <publications>
-            <publication>
-                <id>1</id>
-                <type>Jurnal</type>
-                <name>Metode de prelucrare XML</name>
-                <year>2019</year>
-                <authors>
-                    <authorId>3</authorId>
-                </authors>
-                <ISBN>12345678</ISBN>
-                <URL>google.com</URL>
-                <citations>6320550</citations>
-            </publication>
-            
-            <publication>
-                <id>2</id>
-                <type>Conferinta</type>
-                <name>Kernelul monolitic vs microkernel</name>
-                <year>2018</year>
-                <authors>
-                    <authorId>1</authorId>
-                </authors>
-                <ISBN>11111128</ISBN>
-                <URL>https://techdifferences.com/difference-between-microkernel-and-monolithic-kernel.html</URL>
-                <citations>50000</citations>
-            </publication>
-            
-            <publication>
-                <id>3</id>
-                <type>Volum Colectiv</type>
-                <name>Arta de a lenevi</name>
-                <year>2019</year>
-                <authors>
-                    <authorId>3</authorId>
-                    <authorId>4</authorId>
-                </authors>
-                <ISBN>2222222</ISBN>
-                <URL>https://michelewoodward.com/2007/07/22/the-art-of-being-lazy/</URL>
-                <citations>550</citations>
-            </publication>
-            
-            <publication>
-                <id>4</id>
-                <type>Jurnal</type>
-                <name>Cum sa desenezi o maimuta</name>
-                <year>2009</year>
-                <authors>
-                    <authorId>3</authorId>
-                </authors>
-                <ISBN>12333111</ISBN>
-                <URL>howtodrawamonkey.com</URL>
-                <citations>33032210</citations>
-            </publication>
-            
-            <publication>
-                <id>4</id>
-                <type>Conferinta</type>
-                <name>Efectul cafelei asupra incalzirii globale</name>
-                <year>2019</year>
-                <authors>
-                    <authorId>4</authorId>
-                </authors>
-                <ISBN>Q124333</ISBN>
-                <URL>mahCofee.com</URL>
-                <citations>2140513</citations>
-            </publication>
-            
-            <publication>
-                <id>5</id>
-                <type>Jurnal</type>
-                <name>Transform IT in moneyz</name>
-                <year>2019</year>
-                <authors>
-                    <authorId>2</authorId>
-                </authors>
-                <ISBN>F13r10</ISBN>
-                <URL>iwantmoneyz.com</URL>
-                <citations>10212532</citations>
-            </publication>
-            
-            <publication>
-                <id>6</id>
-                <type>Jurnal</type>
-                <name>Art of making money in FotoSop</name>
-                <year>2016</year>
-                <authors>
-                    <authorId>2</authorId>
-                    <authorId>4</authorId>
-                </authors>
-                <ISBN>D21400</ISBN>
-                <URL>google.com</URL>
-                <citations>6320</citations>
-            </publication>
-            
-        </publications>
-</database>
+<tns:database xmlns:tns="http://www.example.org/NewXMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/NewXMLSchema databaseSchema.xsd ">
+<!-- Authors table -->
+	<tns:authors>
+		<tns:author>
+			<tns:id>1</tns:id>
+			<tns:firstname>Ionel</tns:firstname>
+			<tns:lastname>Tigla</tns:lastname>
+			<tns:address>Strada Nuferilor nr.2 Bucuresti</tns:address>
+			<tns:mobile>075210230</tns:mobile>
+			<tns:affiliations>
+				<tns:departmentId>1</tns:departmentId>
+			</tns:affiliations>
+		</tns:author>
+
+		<tns:author>
+			<tns:id>2</tns:id>
+			<tns:firstname>Dorin</tns:firstname>
+			<tns:lastname>Peste</tns:lastname>
+			<tns:address>Strada Carbunilor nr.18 Iasi</tns:address>
+			<tns:mobile>0723331110</tns:mobile>
+			<tns:affiliations>
+				<tns:departmentId>1</tns:departmentId>
+				<tns:departmentId>2</tns:departmentId>
+			</tns:affiliations>
+		</tns:author>
+
+		<tns:author>
+			<tns:id>3</tns:id>
+			<tns:firstname>Leonardo</tns:firstname>
+			<tns:lastname>Davinci</tns:lastname>
+			<tns:address>Strada Victoria nr.1 Timisoara</tns:address>
+			<tns:mobile>035552315</tns:mobile>
+			<tns:affiliations>
+				<tns:departmentId>1</tns:departmentId>
+				<tns:departmentId>2</tns:departmentId>
+				<tns:departmentId>3</tns:departmentId>
+				<tns:departmentId>4</tns:departmentId>
+			</tns:affiliations>
+		</tns:author>
+
+		<tns:author>
+			<tns:id>4</tns:id>
+			<tns:firstname>Dorel</tns:firstname>
+			<tns:lastname>Mesteru</tns:lastname>
+			<tns:address>Strada Mihai Viteazul nr.9 Timisoara</tns:address>
+			<tns:mobile>-</tns:mobile>
+			<tns:affiliations>
+				<tns:departmentId>3</tns:departmentId>
+			</tns:affiliations>
+		</tns:author>
+	</tns:authors>
+
+	<!-- departments table -->
+	<tns:departments>
+		<tns:department>
+			<tns:id>1</tns:id>
+			<tns:name>Facultatea de Matematica si Informatica</tns:name>
+		</tns:department>
+
+		<tns:department>
+			<tns:id>2</tns:id>
+			<tns:name>Facultatea de Economie si Administrare a afacerilor</tns:name>
+		</tns:department>
+
+		<tns:department>
+			<tns:id>3</tns:id>
+			<tns:name>Facultatea de Filosofie si Gandire Abstracta</tns:name>
+		</tns:department>
+
+		<tns:department>
+			<tns:id>4</tns:id>
+			<tns:name>Facultatea de Arte Frumoase</tns:name>
+		</tns:department>
+	</tns:departments>
+
+	<!-- Publications table -->
+	<tns:publications>
+		<tns:publication>
+			<tns:id>1</tns:id>
+			<tns:type>Jurnal</tns:type>
+			<tns:name>Metode de prelucrare XML</tns:name>
+			<tns:year>2019</tns:year>
+			<tns:authors>
+				<tns:authorId>3</tns:authorId>
+			</tns:authors>
+			<tns:ISBN>12345678</tns:ISBN>
+			<tns:URL>google.com</tns:URL>
+			<tns:citations>6320550</tns:citations>
+		</tns:publication>
+
+		<tns:publication>
+			<tns:id>2</tns:id>
+			<tns:type>Conferinta</tns:type>
+			<tns:name>Kernelul monolitic vs microkernel</tns:name>
+			<tns:year>2018</tns:year>
+			<tns:authors>
+				<tns:authorId>1</tns:authorId>
+			</tns:authors>
+			<tns:ISBN>11111128</tns:ISBN>
+			<tns:URL>https:/techdifferences.com/difference-between-microkernel-and-monolithic-kernel.html
+			</tns:URL>
+			<tns:citations>50000</tns:citations>
+		</tns:publication>
+
+		<tns:publication>
+			<tns:id>3</tns:id>
+			<tns:type>Volum Colectiv</tns:type>
+			<tns:name>Arta de a lenevi</tns:name>
+			<tns:year>2019</tns:year>
+			<tns:authors>
+				<tns:authorId>3</tns:authorId>
+				<tns:authorId>4</tns:authorId>
+			</tns:authors>
+			<tns:ISBN>2222222</tns:ISBN>
+			<tns:URL>https:/michelewoodward.com/2007/07/22/the-art-of-being-lazy/</tns:URL>
+			<tns:citations>550</tns:citations>
+		</tns:publication>
+
+		<tns:publication>
+			<tns:id>4</tns:id>
+			<tns:type>Jurnal</tns:type>
+			<tns:name>Cum sa desenezi o maimuta</tns:name>
+			<tns:year>2009</tns:year>
+			<tns:authors>
+				<tns:authorId>3</tns:authorId>
+			</tns:authors>
+			<tns:ISBN>12333111</tns:ISBN>
+			<tns:URL>howtodrawamonkey.com</tns:URL>
+			<tns:citations>33032210</tns:citations>
+		</tns:publication>
+
+		<tns:publication>
+			<tns:id>4</tns:id>
+			<tns:type>Conferinta</tns:type>
+			<tns:name>Efectul cafelei asupra incalzirii globale</tns:name>
+			<tns:year>2019</tns:year>
+			<tns:authors>
+				<tns:authorId>4</tns:authorId>
+			</tns:authors>
+			<tns:ISBN>Q124333</tns:ISBN>
+			<tns:URL>mahCofee.com</tns:URL>
+			<tns:citations>2140513</tns:citations>
+		</tns:publication>
+
+		<tns:publication>
+			<tns:id>5</tns:id>
+			<tns:type>Jurnal</tns:type>
+			<tns:name>Transform IT in moneyz</tns:name>
+			<tns:year>2019</tns:year>
+			<tns:authors>
+				<tns:authorId>2</tns:authorId>
+			</tns:authors>
+			<tns:ISBN>F13r10</tns:ISBN>
+			<tns:URL>iwantmoneyz.com</tns:URL>
+			<tns:citations>10212532</tns:citations>
+		</tns:publication>
+
+		<tns:publication>
+			<tns:id>6</tns:id>
+			<tns:type>Jurnal</tns:type>
+			<tns:name>Art of making money in FotoSop</tns:name>
+			<tns:year>2016</tns:year>
+			<tns:authors>
+				<tns:authorId>2</tns:authorId>
+				<tns:authorId>4</tns:authorId>
+			</tns:authors>
+			<tns:ISBN>D21400</tns:ISBN>
+			<tns:URL>google.com</tns:URL>
+			<tns:citations>6320</tns:citations>
+
+		</tns:publication>
+	</tns:publications>
+</tns:database>

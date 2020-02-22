@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tns:database xmlns:tns="http://www.example.org/NewXMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/NewXMLSchema databaseSchema.xsd ">
+<tns:database
+	xmlns:tns="http://www.example.org/NewXMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/NewXMLSchema databaseSchema.xsd ">
   <tns:authors>
     <tns:author>
       <tns:id>1</tns:id>

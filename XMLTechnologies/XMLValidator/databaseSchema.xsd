@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/NewXMLSchema" xmlns:tns="http://www.example.org/NewXMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
-	
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/NewXMLSchema"
+	xmlns:tns="http://www.example.org/NewXMLSchema"
+	attributeFormDefault="unqualified" elementFormDefault="qualified">
+
 	<element name="database" type="tns:tableName"></element>
-	
+
 	<complexType name="tableName">
 		<sequence>
-			<element name="authors" type="tns:author_member" maxOccurs="1"
-				minOccurs="1" />
+			<element name="authors" type="tns:author_member"
+				maxOccurs="1" minOccurs="1" />
 			<element name="departments" type="tns:department_member"
 				maxOccurs="1" minOccurs="1">
 			</element>
@@ -15,7 +18,7 @@
 			</element>
 		</sequence>
 	</complexType>
-	
+
 	<complexType name="authorType">
 		<sequence>
 			<element type="positiveInteger" name="id" maxOccurs="1"
@@ -32,25 +35,27 @@
 				maxOccurs="1" minOccurs="1" />
 		</sequence>
 	</complexType>
-	
+
 	<complexType name="author_member">
 		<sequence>
 			<element type="tns:authorType" name="author" minOccurs="1" />
 		</sequence>
 	</complexType>
-	
+
 	<complexType name="department_member">
 		<sequence>
-			<element type="tns:departmentType" name="department" minOccurs="1" />
+			<element type="tns:departmentType" name="department"
+				minOccurs="1" />
 		</sequence>
 	</complexType>
-	
+
 	<complexType name="publication_member">
 		<sequence>
-			<element type="tns:publicationType" name="publication" minOccurs="1" />
+			<element type="tns:publicationType" name="publication"
+				minOccurs="1" />
 		</sequence>
 	</complexType>
-	
+
 	<complexType name="affiliationType">
 		<sequence>
 			<element name="departmentId" type="positiveInteger"
@@ -59,44 +64,50 @@
 		</sequence>
 	</complexType>
 
-
 	<complexType name="departmentType">
 		<sequence>
-			<element name="id" type="positiveInteger" maxOccurs="1" minOccurs="1"></element>
-			<element name="name" type="string" maxOccurs="1" minOccurs="1"></element>
+			<element name="id" type="positiveInteger" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="name" type="string" maxOccurs="1"
+				minOccurs="1"></element>
 		</sequence>
 	</complexType>
 
 
-    <complexType name="publicationType" mixed="false">
-    	<sequence>
-    		<element name="id" type="positiveInteger" minOccurs="1" maxOccurs="1"></element>
-    		<element name="type" minOccurs="1" maxOccurs="1">
-    			<simpleType>
-    				<restriction base="string">
-    					<enumeration value="Journal"></enumeration>
-    					<enumeration value="Conferinta"></enumeration>
-    					<enumeration value="Articol"></enumeration>
-    					<enumeration value="Volum Colectiv"></enumeration>
-    				</restriction>
-    			</simpleType>
-    		</element>
-    		<element name="name" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="year" type="positiveInteger" minOccurs="1" maxOccurs="1"></element>
-    		<element name="authors" type="tns:authorIdType" minOccurs="1"
-    				maxOccurs="unbounded">
-    		</element>
-    		<element name="ISBN" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="URL" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="citations" type="string" minOccurs="1" maxOccurs="1"></element>
-    	</sequence>
-    </complexType>
+	<complexType name="publicationType" mixed="false">
+		<sequence>
+			<element name="id" type="positiveInteger" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="type" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="Journal"></enumeration>
+						<enumeration value="Conferinta"></enumeration>
+						<enumeration value="Articol"></enumeration>
+						<enumeration value="Volum Colectiv"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="name" type="string" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="year" type="positiveInteger" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="authors" type="tns:authorIdType" minOccurs="1"
+				maxOccurs="unbounded">
+			</element>
+			<element name="ISBN" type="string" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="URL" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="citations" type="string" minOccurs="1"
+				maxOccurs="1"></element>
+		</sequence>
+	</complexType>
 
-    <complexType name="authorIdType">
-    	<sequence>
+	<complexType name="authorIdType">
+		<sequence>
 			<element name="authorId" type="positiveInteger"
 				maxOccurs="unbounded" minOccurs="1">
 			</element>
 		</sequence>
-    </complexType>
+	</complexType>
 </schema>

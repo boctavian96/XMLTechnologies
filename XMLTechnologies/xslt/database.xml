@@ -1,0 +1,174 @@
+	<!-- Database with for homework 1 -->
+    <database>
+        
+        <!-- Authors table -->
+        <authors>
+            <author>
+                <id>1</id>
+                <firstname>Ionel</firstname>
+                <lastname>Tigla</lastname>
+                <address>Strada Nuferilor nr.2 Bucuresti</address>
+                <mobile>075210230</mobile>
+                <affiliations>
+                    <departmentId>1</departmentId>
+                </affiliations>
+            </author>
+                
+            <author>
+                <id>2</id>
+                <firstname>Dorin</firstname>
+                <lastname>Peste</lastname>
+                <address>Strada Carbunilor nr.18 Iasi</address>
+                <mobile>0723331110</mobile>
+                <affiliations>
+                    <departmentId>1</departmentId>
+                    <departmentId>2</departmentId>
+                </affiliations>
+            </author>
+                
+            <author>
+                <id>3</id>
+                <firstname>Leonardo</firstname>
+                <lastname>Davinci</lastname>
+                <address>Strada Victoria nr.1 Timisoara</address>
+                <mobile>035552315</mobile>
+                <affiliations>
+                    <departmentId>1</departmentId>
+                    <departmentId>2</departmentId>
+                    <departmentId>3</departmentId>
+                    <departmentId>4</departmentId>
+                </affiliations>
+            </author>
+                
+            <author>
+                <id>4</id>
+                <firstname>Dorel</firstname>
+                <lastname>Mesteru</lastname>
+                <address>Strada Mihai Viteazul nr.9 Timisoara</address>
+                <mobile>-</mobile>
+                <affiliations>
+                    <departmentId>3</departmentId>
+                </affiliations>
+            </author>
+        </authors>
+        
+        <!-- departments table -->
+        <departments>
+            <department>
+                <id>1</id>
+                <name>Facultatea de Matematica si Informatica</name>
+            </department>
+                
+            <department>
+                <id>2</id>
+                <name>Facultatea de Economie si Administrare a afacerilor</name>
+            </department>
+                
+            <department>
+                <id>3</id>
+                <name>Facultatea de Filosofie si Gandire Abstracta</name>
+            </department>
+                
+            <department>
+                <id>4</id>
+                <name>Facultatea de Arte Frumoase</name>
+            </department>
+        </departments>
+        
+        <!-- Publications table -->
+        <publications>
+            <publication>
+                <id>1</id>
+                <type>Jurnal</type>
+                <name>Metode de prelucrare XML</name>
+                <year>2019</year>
+                <authors>
+                    <authorId>3</authorId>
+                </authors>
+                <ISBN>12345678</ISBN>
+                <URL>google.com</URL>
+                <citations>6320550</citations>
+            </publication>
+            
+            <publication>
+                <id>2</id>
+                <type>Conferinta</type>
+                <name>Kernelul monolitic vs microkernel</name>
+                <year>2018</year>
+                <authors>
+                    <authorId>1</authorId>
+                </authors>
+                <ISBN>11111128</ISBN>
+                <URL>https://techdifferences.com/difference-between-microkernel-and-monolithic-kernel.html</URL>
+                <citations>50000</citations>
+            </publication>
+            
+            <publication>
+                <id>3</id>
+                <type>Volum Colectiv</type>
+                <name>Arta de a lenevi</name>
+                <year>2019</year>
+                <authors>
+                    <authorId>3</authorId>
+                    <authorId>4</authorId>
+                </authors>
+                <ISBN>2222222</ISBN>
+                <URL>https://michelewoodward.com/2007/07/22/the-art-of-being-lazy/</URL>
+                <citations>550</citations>
+            </publication>
+            
+            <publication>
+                <id>4</id>
+                <type>Jurnal</type>
+                <name>Cum sa desenezi o maimuta</name>
+                <year>2009</year>
+                <authors>
+                    <authorId>3</authorId>
+                </authors>
+                <ISBN>12333111</ISBN>
+                <URL>howtodrawamonkey.com</URL>
+                <citations>33032210</citations>
+            </publication>
+            
+            <publication>
+                <id>4</id>
+                <type>Conferinta</type>
+                <name>Efectul cafelei asupra incalzirii globale</name>
+                <year>2019</year>
+                <authors>
+                    <authorId>4</authorId>
+                </authors>
+                <ISBN>Q124333</ISBN>
+                <URL>mahCofee.com</URL>
+                <citations>2140513</citations>
+            </publication>
+            
+            <publication>
+                <id>5</id>
+                <type>Jurnal</type>
+                <name>Transform IT in moneyz</name>
+                <year>2019</year>
+                <authors>
+                    <authorId>2</authorId>
+                </authors>
+                <ISBN>F13r10</ISBN>
+                <URL>iwantmoneyz.com</URL>
+                <citations>10212532</citations>
+            </publication>
+            
+            <publication>
+                <id>6</id>
+                <type>Jurnal</type>
+                <name>Art of making money in FotoSop</name>
+                <year>2016</year>
+                <authors>
+                    <authorId>2</authorId>
+                    <authorId>4</authorId>
+                </authors>
+                <ISBN>D21400</ISBN>
+                <URL>google.com</URL>
+                <citations>6320</citations>
+            </publication>
+            
+        </publications>
+    </database>
